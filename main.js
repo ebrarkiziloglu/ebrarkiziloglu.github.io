@@ -10,9 +10,7 @@
     if (saved) rootEl.dataset.theme = saved;
   } catch (e) {}
   if ($('theme')) $('theme').addEventListener('click', () => {
-    const dark = rootEl.dataset.theme
-      ? rootEl.dataset.theme === 'dark'
-      : matchMedia('(prefers-color-scheme: dark)').matches;
+    const dark = rootEl.dataset.theme !== 'light';
     rootEl.dataset.theme = dark ? 'light' : 'dark';
     try { localStorage.setItem('theme', rootEl.dataset.theme); } catch (e) {}
   });

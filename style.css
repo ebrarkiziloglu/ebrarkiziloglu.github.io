@@ -1,39 +1,32 @@
 :root {
-  --bg: #f7f3ff;
-  --bg-2: #ece4fd;
-  --card: #fdfbff;
-  --ink: #241a3d;
-  --muted: #6b6188;
-  --line: #ddd0f6;
-  --accent: #ad8df0;          /* fills */
-  --accent-ink: #241a3d;      /* text on fills */
-  --accent-strong: #6a3fd0;   /* links, text accents */
-  --root: #241a3d;
-  --deriv: #b45309;
-  --plural: #0f766e;
-  --poss: #be185d;
-  --case: #6a3fd0;
-  --ok: #15803d;
-  --bad: #b91c1c;
+  /* dark ground, bone ink, one mint accent */
+  --bg: #161c1a;
+  --bg-2: #1f2725;
+  --card: #1f2725;
+  --ink: #e3e2da;
+  --muted: #a2a89f;
+  --line: #2b3532;
+  --accent: #5fd6a8;          /* fills */
+  --accent-ink: #161c1a;      /* text on fills */
+  --accent-strong: #7fe0b9;   /* links, text accents */
+  --root: #e3e2da;
+  --deriv: #f3b95f;
+  --plural: #6ec6ff;
+  --poss: #f9a8d4;
+  --case: #8fb4ff;
+  --ok: #4ade80;
+  --bad: #f87171;
   --shadow: none;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Inter", system-ui, sans-serif;   /* labels use the text face; real code uses --code */
   --code: ui-monospace, "SF Mono", Menlo, Consolas, monospace; /* taste-skill-ignore: real code blocks */
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #130d22; --bg-2: #1c1432; --card: #1a1230; --ink: #f1ecfa; --muted: #a79dc2;
-    --line: #2d2247; --accent-strong: #c4b0f7;
-    --root: #f1ecfa; --deriv: #f3b95f; --plural: #5eead4; --poss: #f9a8d4; --case: #c4b0f7;
-    --ok: #4ade80; --bad: #f87171; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #130d22; --bg-2: #1c1432; --card: #1a1230; --ink: #f1ecfa; --muted: #a79dc2;
-  --line: #2d2247; --accent-strong: #c4b0f7;
-  --root: #f1ecfa; --deriv: #f3b95f; --plural: #5eead4; --poss: #f9a8d4; --case: #c4b0f7;
-  --ok: #4ade80; --bad: #f87171; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+:root[data-theme="light"] {
+  --bg: #eef2ef; --bg-2: #dde7e1; --card: #f6f9f7; --ink: #161c1a; --muted: #566159;
+  --line: #c7d4cc; --accent-strong: #14684c;
+  --root: #161c1a; --deriv: #b45309; --plural: #0f766e; --poss: #be185d; --case: #2f5fd0;
+  --ok: #15803d; --bad: #b91c1c;
 }
 
 * { box-sizing: border-box; }
@@ -47,9 +40,8 @@ a:hover { text-decoration-thickness: 2px; }
 .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; } /* taste-skill-ignore */
 h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
-:root { color-scheme: light dark; }
+:root { color-scheme: dark; }
 :root[data-theme="light"] { color-scheme: light; }
-:root[data-theme="dark"] { color-scheme: dark; }
 .skip { position: absolute; left: 16px; top: -48px; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 10px; z-index: 20; text-decoration: none; font-weight: 500; }
 .skip:focus { top: 12px; }
 button, a, .chip { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
@@ -325,7 +317,7 @@ pre {
 
 /* findings placeholder */
 .card .soon { margin-top: 20px; color: var(--ink); font-weight: 500; }
-.card .links a { background: #3b2a6b; color: #fff; }
+.card .links a { background: #1f4d3d; color: #e3e2da; }
 .card .links a:hover { background: var(--accent); color: var(--accent-ink); }
 .card .links.inline { margin-top: 24px; }
 @media (max-width: 640px) { h3 { font-size: 20px; } }
