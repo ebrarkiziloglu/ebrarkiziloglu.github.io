@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A. Ebrar Kızıloğlu</title>
+<meta name="description" content="NLP researcher at TUM studying how morphological structure shapes what small and low-resource language models learn. Creator of TabiBERT.">
+<meta property="og:title" content="A. Ebrar Kızıloğlu">
+<meta property="og:description" content="How does word structure shape what language models learn? Turkish, German, and a lot of suffixes.">
+<meta name="theme-color" content="#200440">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23200440'/%3E%3Ctext x='50' y='70' font-size='62' text-anchor='middle' fill='%23f3b95f' font-family='Georgia,serif'%3Eş%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Home">ş</a>
+  <nav aria-label="Sections">
+    <a href="#play">Playground</a>
+    <a href="#work">Research</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#more">Beyond</a>
+  </nav>
+  <button id="theme" class="icon-btn" aria-label="Toggle light/dark theme" title="Toggle theme">◐</button>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero wrap">
+  <p class="eyebrow">NLP researcher · TUM Munich · ex-Google</p>
+  <h1>A. Ebrar <span class="nowrap">Kızıloğlu</span></h1>
+  <p class="lede">I study how <em>word structure</em> shapes what small and low-resource language models learn, and how we can tell.</p>
+
+  <div class="stage" aria-live="polite">
+    <div class="stage-word" id="heroWord" aria-label="Animated Turkish word"></div>
+    <div class="stage-gloss mono" id="heroGloss"></div>
+    <div class="stage-trans" id="heroTrans"></div>
+  </div>
+  <p class="hint">↑ One Turkish “word”, one English sentence. This is the problem I work on. <a href="#play">Build your own →</a></p>
+
+  <ul class="links">
+    <li><a href="https://github.com/ebrarkiziloglu">GitHub</a></li>
+    <li><a href="https://scholar.google.com/citations?user=TYsTVWoAAAAJ&hl=tr">Google Scholar</a></li>
+    <li><a href="https://www.linkedin.com/in/ebrarkiziloglu/">LinkedIn</a></li>
+    <li><a href="mailto:ebrarkiziloglu@gmail.com">Email</a></li>
+    <li><a href="cv.pdf">CV (PDF)</a></li>
+  </ul>
+</section>
+
+<!-- PLAYGROUND -->
+<section id="play" class="wrap">
+  <h2><span class="num">01</span> Agglutination playground</h2>
+  <p class="sec-lede">Turkish glues suffixes onto roots, and every suffix changes shape to match what is in front of it. A model has to learn those rules from characters alone. Pick a root and stack suffixes, and the rules show up below, the way a morphological analyzer such as Zemberek would see them.</p>
+
+  <div class="panel">
+    <div class="ctl">
+      <span class="ctl-label">Root</span>
+      <div class="chips" id="rootChips" role="radiogroup" aria-label="Root"></div>
+    </div>
+    <div class="ctl">
+      <span class="ctl-label">Derivation</span>
+      <div class="chips" id="derivChips" role="radiogroup" aria-label="Derivation"></div>
+    </div>
+    <div class="ctl">
+      <span class="ctl-label">Plural</span>
+      <div class="chips" id="pluralChips" role="radiogroup" aria-label="Plural"></div>
+    </div>
+    <div class="ctl">
+      <span class="ctl-label">Possessive</span>
+      <div class="chips" id="possChips" role="radiogroup" aria-label="Possessive"></div>
+    </div>
+    <div class="ctl">
+      <span class="ctl-label">Case</span>
+      <div class="chips" id="caseChips" role="radiogroup" aria-label="Case"></div>
+    </div>
+
+    <div class="result" aria-live="polite">
+      <div class="result-word" id="outWord"></div>
+      <div class="result-gloss mono" id="outGloss"></div>
+      <div class="result-meta"><span id="outMeta"></span> <button class="btn" id="shuffle" type="button">🎲 Surprise me</button></div>
+      <ul class="rules" id="outRules"></ul>
+    </div>
+  </div>
+  <p class="fine">Covers the regular patterns (4-way and 2-way harmony, y/n/s buffers, d/t and c/ç voicing, k→ğ and p→b alternation, vowel drop). Loan-word exceptions and irregular roots are the long tail, and that tail is part of why this is hard for small LMs.</p>
+</section>
+
+<!-- RESEARCH -->
+<section id="work" class="wrap">
+  <h2><span class="num">02</span> Research</h2>
+
+  <article class="card">
+    <header>
+      <h3>Does Turkish case morphology help German case sensitivity?</h3>
+      <span class="meta">TUM · Data Analytics &amp; Statistics Lab · Prof. Alexander Fraser · Nov 2025 –</span>
+    </header>
+    <p>A controlled two-phase pretraining study with GPT-2-style <strong>character-level LMs</strong>. Train on Turkish (or English as the control), then on German, and ask whether knowledge of case marking carries over. Evaluation uses German Accusative↔Dative <strong>minimal pairs</strong> built from Universal Dependencies, scored by <strong>perplexity-based probing</strong> across seeds.</p>
+    <ul class="tags">
+      <li>Zemberek</li><li>SMOR</li><li>NLLB subsampling</li><li>ablations</li><li>TOST equivalence testing</li>
+    </ul>
+    <details>
+      <summary>What did I find?</summary>
+      <p>Phase-1 pretraining gives about a <strong>+4 point</strong> gain in German case accuracy, but Turkish has <em>no significant advantage</em> over English (TOST equivalence). Ablations (word shuffling, stripping Turkish case suffixes, resetting embeddings) show that resetting embeddings hurts English→German transfer disproportionately. So some of what transfers is not about case at all. Paper in preparation with M. Di Marco, L. Bylinina and L. Edman.</p>
+    </details>
+  </article>
+
+  <article class="card">
+    <header>
+      <h3>TabiBERT &amp; TabiBench</h3>
+      <span class="meta">Bogazici University · Tabilab · Jan 2025 – Jan 2026</span>
+    </header>
+    <p>A modern Turkish encoder, built end to end: an <strong>84.88B-token</strong> pretraining corpus, a ModernBERT-based model trained for <strong>1T tokens</strong>, and <strong>TabiBench</strong>, a unified Turkish NLP benchmark. TabiBERT sets a new state of the art on <strong>5 of 8</strong> tasks against the major Turkish BERTs.</p>
+    <ul class="links inline">
+      <li><a href="https://huggingface.co/boun-tabilab/TabiBERT">🤗 Model</a></li>
+      <li><a href="https://huggingface.co/collections/boun-tabilab/tabibench">🤗 TabiBench</a></li>
+      <li><a href="https://arxiv.org/abs/2512.23065">arXiv:2512.23065</a></li>
+    </ul>
+    <p class="fine">Invited talk at <a href="https://latentshift.ai/2026/">LatentShift 2026</a>: pretraining, evaluation and production use of a Turkish encoder.</p>
+  </article>
+
+  <article class="card">
+    <header>
+      <h3>Can LMs inflect Turkish correctly?</h3>
+      <span class="meta">Co-supervisor, bachelor thesis · Bogazici University · Sep 2026 –</span>
+    </header>
+    <p>Co-supervising (with Assist. Prof. Suzan Üsküdarlı) a project on root + grammatical features → inflected form: suffix choice and order, vowel harmony, consonant alternation. The students are building a <strong>benchmark of generation tasks</strong>, a reproducible evaluation program, and a <strong>taxonomy of generation errors</strong>. It is the playground above, turned around and pointed at LLMs.</p>
+  </article>
+</section>
+
+<!-- NUMBERS -->
+<section id="numbers" class="wrap">
+  <h2><span class="num">03</span> A few numbers I’m fond of</h2>
+  <div class="grid stats">
+    <div class="stat"><div class="big" data-to="84.88" data-dec="2" data-suf="B">0</div><div class="cap">tokens in the Turkish pretraining corpus</div></div>
+    <div class="stat"><div class="big" data-to="1" data-suf="T">0</div><div class="cap">tokens TabiBERT was pretrained on</div></div>
+    <div class="stat"><div class="big" data-to="5" data-suf=" / 8">0</div><div class="cap">TabiBench tasks with new state of the art</div></div>
+    <div class="stat"><div class="big" data-to="64" data-suf="%">0</div><div class="cap">relative cut in vocoder Gross Pitch Error (4.64% → 1.66%) at Google TTS</div></div>
+    <div class="stat"><div class="big" data-to="31" data-suf="%">0</div><div class="cap">of humans fooled by my GPT-4o Turing Game bot (120+ sessions, 24 players)</div></div>
+    <div class="stat"><div class="big" data-to="4" data-pre="~" data-suf=" pts">0</div><div class="cap">German case-accuracy gain from Phase-1 pretraining</div></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="wrap">
+  <h2><span class="num">04</span> Case-sensitivity quiz</h2>
+  <p class="sec-lede">In my study, a character-level model reads two nearly identical German sentences and “votes” for the one it finds less surprising. Now it’s your turn: pick the grammatical one.</p>
+  <div class="panel quiz" id="quiz-box"></div>
+</section>
+
+<!-- BEYOND -->
+<section id="more" class="wrap">
+  <h2><span class="num">05</span> Before and beyond</h2>
+  <div class="grid two">
+    <div class="card slim">
+      <h3>Google</h3>
+      <p><strong>Text-to-Speech Research, London (2023).</strong> Fixed the neural vocoder’s squeaks on extreme pitch with an <strong>F0-aware loss</strong>: out-of-distribution features are vocoded, F0 is re-extracted with a differentiable estimator (FiPPiE), and a log-F0 MSE loss is added. No architecture change. Evaluated with MOS and AB tests.</p>
+      <p><strong>STEP Intern, Calendar, Zurich (2022).</strong> Latency benchmarks for hot-loop code in the shared Android codebase, plus a PII scrubber and generator that turn real calendars into realistic test data.</p>
+    </div>
+    <div class="card slim">
+      <h3>Math olympiads</h3>
+      <p><strong>Silver, European Girls’ Mathematical Olympiad</strong> (<a href="https://www.egmo.org/people/person746/">EGMO</a>) 2019, representing Türkiye, and <strong>Silver, Turkish National Mathematical Olympiad</strong> 2019. TÜBİTAK scholarship recipient 2020–2024.</p>
+      <p class="fine">Before I was counting tokens, I was proving things about integers.</p>
+    </div>
+    <div class="card slim">
+      <h3>Turing Game Bot</h3>
+      <p>Bachelor thesis: a GPT-4o chatbot that fooled humans in <strong>31%</strong> of Turing Game sessions, benchmarked against Mistral, LLaMA and GPT, with prompt optimization. Python, Node.js, SQLite, Docker, Nginx. <a href="https://github.com/ebrarkiziloglu/Turing-Game-Bot-Undergrad-Project">Code →</a></p>
+    </div>
+    <div class="card slim">
+      <h3>Education</h3>
+      <p><strong>MSc Informatics, TUM</strong> (2025–2027), Machine Learning track. Advanced NLP, Intro to Deep Learning.<br>
+      <strong>BSc Computer Engineering, Bogazici University</strong> (2020–2025).</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap contact">
+  <h2>Say merhaba</h2>
+  <p>Interested in morphology, small LMs, Turkish NLP, or evaluation? I’d love to hear from you.</p>
+  <p><a class="btn big-btn" href="mailto:ebrarkiziloglu@gmail.com">ebrarkiziloglu@gmail.com</a></p>
+</section>
+
+</main>
+
+<footer class="wrap foot">
+  <span>© <span id="yr"></span> A. Ebrar Kızıloğlu</span>
+  <span class="mono">ev·ler·imiz·de</span>
+</footer>
+
+<script src="engine.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
