@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TabiBERT · A. Ebrar Kızıloğlu</title>
+<meta name="description" content="TabiBERT: a modern ModernBERT-based Turkish encoder pre-trained on 1T tokens, and TabiBench, a unified Turkish NLP benchmark.">
+<meta property="og:title" content="TabiBERT">
+<meta property="og:image" content="assets/tabibert.png">
+<meta name="theme-color" content="#ad8df0">
+<link rel="icon" href="assets/tabibert.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="./" aria-label="Home">ş</a>
+  <nav aria-label="Pages">
+    <a href="./">Home</a>
+    <a href="tabibert.html" aria-current="page">TabiBERT</a>
+    <a href="morphology.html">Morphology</a>
+  </nav>
+  <button id="theme" class="icon-btn" aria-label="Toggle light/dark theme" title="Toggle theme">◐</button>
+</header>
+
+<main>
+
+<section class="page-head wrap">
+  <div class="model-head">
+    <img src="assets/tabibert.png" alt="TabiBERT logo" width="112" height="112">
+    <div>
+      <h1>TabiBERT</h1>
+      <p class="sec-lede">A modern encoder-only model for Turkish, built on the ModernBERT architecture and pre-trained from scratch on 1T tokens. Built by <a href="https://tabilab.cmpe.bogazici.edu.tr/">Tabilab</a> at Boğaziçi University.</p>
+    </div>
+  </div>
+  <ul class="links inline">
+    <li><a class="primary" href="https://huggingface.co/boun-tabilab/TabiBERT">🤗 Model</a></li>
+    <li><a href="https://github.com/boun-tabi-LMG/TabiBERT">GitHub code</a></li>
+    <li><a href="https://arxiv.org/abs/2512.23065">arXiv paper</a></li>
+    <li><a href="https://huggingface.co/collections/boun-tabilab/tabibench">TabiBench</a></li>
+  </ul>
+</section>
+
+<section class="wrap" id="numbers">
+  <h2>At a glance</h2>
+  <div class="grid stats">
+    <div class="stat"><div class="big" data-to="1" data-suf="T">0</div><div class="cap">pre-training tokens</div></div>
+    <div class="stat"><div class="big" data-to="84.88" data-dec="2" data-suf="B">0</div><div class="cap">tokens in the Turkish corpus I built</div></div>
+    <div class="stat"><div class="big" data-to="5" data-suf=" / 8">0</div><div class="cap">TabiBench task categories with a new state of the art</div></div>
+    <div class="stat"><div class="big" data-to="8192" data-dec="0">0</div><div class="cap">tokens of native context</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="use-cases">
+  <h2>Use cases</h2>
+  <div class="uses">
+    <div class="use"><h3>Turkish NLP</h3><p>Classification, question answering, NLI and other fine-tuned tasks.</p></div>
+    <div class="use"><h3>Search &amp; retrieval</h3><p>Semantic search and information retrieval over Turkish documents.</p></div>
+    <div class="use"><h3>Long documents</h3><p>Document classification and retrieval with up to 8,192 tokens of context.</p></div>
+    <div class="use"><h3>Turkish–English</h3><p>Text understanding across both languages (about 13% of the data is non-Turkish).</p></div>
+    <div class="use"><h3>Code retrieval</h3><p>Representation learning for code, thanks to code and English commentary in the mix.</p></div>
+    <div class="use"><h3>Math &amp; symbols</h3><p>Mathematical text and symbolic content, also seen in pre-training.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="start">
+  <h2>Try it</h2>
+  <pre><code>from transformers import pipeline
+
+pipe = pipeline("fill-mask", model="boun-tabilab/TabiBERT")
+print(pipe("[MASK], Türkiye Cumhuriyeti'nin başkentidir.")[0]["sequence"])
+# Ankara, Türkiye Cumhuriyeti'nin başkentidir.</code></pre>
+</section>
+
+<section class="wrap" id="about">
+  <h2>How it came together</h2>
+  <ul class="rows">
+    <li><span class="when">Data</span><span class="what">Built an <b>84.88B-token</b> Turkish pre-training corpus from multiple sources.</span></li>
+    <li><span class="when">Model</span><span class="what">Pre-trained a ModernBERT-based encoder for <b>1T</b> tokens.</span></li>
+    <li><span class="when">Benchmark</span><span class="what">Developed <b>TabiBench</b> and compared TabiBERT against the major Turkish BERT models.</span></li>
+    <li><span class="when">Talk</span><span class="what">Presented it at <a href="https://latentshift.ai/blog/lsai-2026-speaker-ebrar-kiziloglu/">LatentShift 2026</a>, İstanbul.</span></li>
+  </ul>
+  <p class="fine">Paper: M. Türker, A. E. Kızıloğlu, O. Güngör, S. Üsküdarlı. <em>TabiBERT: A Large-Scale ModernBERT Foundation Model and a Unified Benchmark for Turkish Language.</em> arXiv:2512.23065. Under review at the Cambridge NLP Journal.</p>
+</section>
+
+</main>
+
+<footer class="wrap foot">
+  <span>© <span id="yr"></span> A. Ebrar Kızıloğlu</span>
+  <a href="./">← Home</a>
+</footer>
+
+<script src="engine.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

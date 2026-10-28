@@ -9,14 +9,14 @@
     const saved = localStorage.getItem('theme');
     if (saved) rootEl.dataset.theme = saved;
   } catch (e) {}
-  $('theme').addEventListener('click', () => {
+  if ($('theme')) $('theme').addEventListener('click', () => {
     const dark = rootEl.dataset.theme
       ? rootEl.dataset.theme === 'dark'
       : matchMedia('(prefers-color-scheme: dark)').matches;
     rootEl.dataset.theme = dark ? 'light' : 'dark';
     try { localStorage.setItem('theme', rootEl.dataset.theme); } catch (e) {}
   });
-  $('yr').textContent = new Date().getFullYear();
+  if ($('yr')) $('yr').textContent = new Date().getFullYear();
 
   // ---------- rendering helpers ----------
   function renderWord(el, parts, animateLast) {
@@ -49,7 +49,7 @@
     if (n < full.parts.length) heroTimer = setTimeout(() => heroStep(preset, n + 1), 650);
     else if (!reduce) heroTimer = setTimeout(() => { heroIdx = (heroIdx + 1) % PRESETS.length; heroStep(PRESETS[heroIdx], 1); }, 3200);
   }
-  if (reduce) heroStep(PRESETS[0], 99); else heroStep(PRESETS[0], 1);
+  if ($('heroWord')) { if (reduce) heroStep(PRESETS[0], 99); else heroStep(PRESETS[0], 1); }
 
   // ---------- playground ----------
   const state = { root: ROOTS[0], deriv: 'none', plural: false, poss: 'none', kase: 'nom' };
@@ -103,7 +103,7 @@
       li.append(tag, tx); ul.appendChild(li);
     });
   }
-  $('shuffle').addEventListener('click', () => {
+  if ($('shuffle')) $('shuffle').addEventListener('click', () => {
     const pick = (a) => a[Math.floor(Math.random() * a.length)];
     state.root = pick(ROOTS);
     state.deriv = pick(Object.keys(DERIV));
@@ -112,7 +112,7 @@
     state.kase = pick(Object.keys(CASE));
     refresh();
   });
-  refresh();
+  if ($('rootChips')) refresh();
 
   // ---------- count-up numbers ----------
   const fmt = (el, v) => {
@@ -199,5 +199,5 @@
     });
     qbox.append(top, line, opts, fb);
   }
-  drawQuiz();
+  if (qbox) drawQuiz();
 })();
