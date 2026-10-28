@@ -10,10 +10,11 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ad8df0'/%3E%3Ctext x='50' y='70' font-size='62' text-anchor='middle' fill='%23241a3d' font-family='Georgia,serif'%3Ee%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav">
   <a class="brand" href="./" aria-label="Home">e</a>
@@ -25,11 +26,13 @@
   <button id="theme" class="icon-btn" aria-label="Toggle light/dark theme" title="Toggle theme">◐</button>
 </header>
 
-<main>
+<main id="main">
 
-<section class="page-head wrap">
-  <h1>Morphology</h1>
-  <p class="sec-lede">How does morphological structure shape what small or low-resource language models learn, and how can we evaluate that?</p>
+<section class="page-head split wrap">
+  <div>
+    <h1>Morphology</h1>
+    <p class="sec-lede">How does morphological structure shape what small or low-resource language models learn, and how can we evaluate that?</p>
+  </div>
   <div class="stage" aria-live="polite">
     <div class="stage-word" id="heroWord" aria-label="Animated Turkish word"></div>
     <div class="stage-gloss mono" id="heroGloss"></div>
@@ -42,28 +45,34 @@
 
   <article class="card">
     <header>
-      <h3>Does Turkish case morphology help German case sensitivity?</h3>
-      <span class="meta">TUM · Data Analytics &amp; Statistics Lab · Nov 2025 –</span>
+      <div>
+        <h3>Does Turkish case morphology help German case sensitivity?</h3>
+        <span class="meta">TUM · Data Analytics &amp; Statistics Lab · Nov 2025 –</span>
+      </div>
+      <ul class="links">
+        <li><a href="https://github.com/ebrarkiziloglu/Morphological-Transfer">GitHub</a></li>
+      </ul>
     </header>
     <p>Two-phase pretraining of <strong>character-level LMs</strong>: Turkish (or English as control), then German. Tested on German Accusative↔Dative <strong>minimal pairs</strong> from Universal Dependencies with <strong>perplexity-based probing</strong>.</p>
+    <p class="soon">Findings coming soon.</p>
     <ul class="tags">
       <li>Zemberek</li><li>SMOR</li><li>ablations</li><li>TOST testing</li>
-    </ul>
-    <details>
-      <summary>Findings</summary>
-      <p>Phase-1 pretraining gives about <strong>+4 points</strong> of German case accuracy, with no significant advantage for Turkish over English. Embedding resets hurt English→German transfer disproportionately. With M. Di Marco, L. Bylinina and L. Edman. Paper in preparation.</p>
-    </details>
-    <ul class="links inline">
-      <li><a href="https://github.com/ebrarkiziloglu/Morphological-Transfer">Code</a></li>
     </ul>
   </article>
 
   <article class="card" id="thesis">
     <header>
+      <div>
       <h3>Can LMs inflect Turkish correctly?</h3>
       <span class="meta">Co-supervising a bachelor thesis · Boğaziçi · Sep 2026 –</span>
+    </div>
+    <ul class="links">
+      <li><a>GitHub</a></li>
+    </ul>
     </header>
-    <p>With Assist. Prof. Suzan Üsküdarlı. Root + grammatical features → inflected form. Students are building a <strong>benchmark</strong> of generation tasks, a reproducible evaluation, and a <strong>taxonomy of errors</strong>. It’s the playground below, pointed at LLMs.</p>
+    <p>
+      Studying how well language models generate correctly inflected Turkish words, given the root and the following grammatical features, while obeying the suffix choice and order, vowel harmony and consonant alternations.
+      Students are building a <strong>benchmark</strong> of generation tasks, a reproducible evaluation, and a <strong>taxonomy of errors</strong>. It’s the playground below, pointed at LLMs.</p>
   </article>
 </section>
 
@@ -96,7 +105,7 @@
     <div class="result" aria-live="polite">
       <div class="result-word" id="outWord"></div>
       <div class="result-gloss mono" id="outGloss"></div>
-      <div class="result-meta"><span id="outMeta"></span> <button class="btn" id="shuffle" type="button">🎲 Surprise me</button></div>
+      <div class="result-meta"><span id="outMeta"></span> <button class="btn" id="shuffle" type="button">Surprise me</button></div>
       <ul class="rules" id="outRules"></ul>
     </div>
   </div>
@@ -106,7 +115,7 @@
 <section id="quiz" class="wrap">
   <h2>Case-sensitivity quiz</h2>
   <p class="sec-lede">My models read two near-identical German sentences and pick the less surprising one. You pick the grammatical one.</p>
-  <div class="panel quiz" id="quiz-box"></div>
+  <div class="panel quiz" id="quiz-box" data-ui></div>
 </section>
 
 </main>

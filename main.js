@@ -18,6 +18,33 @@
   });
   if ($('yr')) $('yr').textContent = new Date().getFullYear();
 
+  // ---------- entrance motion ----------
+  if (!reduce && 'IntersectionObserver' in window) {
+    const groups = [
+      '.hero h1, .hero .role, .hero .avatar, .hero .links, .hero .intro, .explore h2, .explore .tile',
+      'main > section:not(.hero)',
+    ];
+    const targets = [];
+    document.querySelectorAll(groups[0]).forEach((e) => targets.push(e));
+    document.querySelectorAll(groups[1]).forEach((sec) => {
+      sec.querySelectorAll(':scope > h1, :scope > h2, :scope > p, :scope > .news, :scope > .tiles > *, :scope > .rows3 > li, :scope > .rows > li, :scope > .places-grid > *, :scope > .contact-side, :scope > .stats > *, :scope > .uses > *, :scope > pre, :scope > .card, :scope > .panel, :scope > .model-head, :scope > .links')
+        .forEach((e) => targets.push(e));
+    });
+    if (targets.length) {
+      rootEl.classList.add('reveal-ready');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      let i = 0, lastTop = -1;
+      targets.forEach((e) => {
+        const top = Math.round(e.getBoundingClientRect().top + scrollY / 1);
+        i = Math.abs(top - lastTop) < 40 ? i + 1 : 0; lastTop = top;
+        e.dataset.reveal = ''; e.style.setProperty('--d', Math.min(i, 5) * 70 + 'ms');
+        io.observe(e);
+      });
+    }
+  }
+
   // ---------- rendering helpers ----------
   function renderWord(el, parts, animateLast) {
     el.textContent = '';
@@ -189,7 +216,7 @@
         blank.textContent = q.ans;
         b.classList.add(ok ? 'right' : 'wrong');
         if (!ok) [...opts.children].find((x) => x.textContent === q.ans).classList.add('right');
-        fb.textContent = (ok ? '✓ ' : '✗ ') + q.why;
+        fb.textContent = (ok ? 'Correct. ' : 'Not quite. ') + q.why;
         const next = el('button', 'btn', qi === QUIZ.length - 1 ? 'See score' : 'Next →'); next.type = 'button';
         next.addEventListener('click', () => { qi++; drawQuiz(); });
         fb.append(document.createElement('br'), next);
