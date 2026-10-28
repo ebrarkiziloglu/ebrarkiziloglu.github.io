@@ -142,7 +142,7 @@
   // ---------- count-up numbers ----------
   const fmt = (el, v) => {
     const dec = +(el.dataset.dec || 0);
-    el.textContent = (el.dataset.pre || '') + v.toFixed(dec) + (el.dataset.suf || '');
+    el.textContent = (el.dataset.pre || '') + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suf || '');
   };
   const run = (el) => {
     const to = +el.dataset.to;

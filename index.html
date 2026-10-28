@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%235fd6a8'/%3E%3Ctext x='50' y='70' font-size='62' text-anchor='middle' fill='%23161c1a' font-family='Georgia,serif'%3Ee%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -45,8 +45,8 @@
         <li><a href="cv.pdf">CV</a></li>
       </ul>
     </div>
-    <p class="intro">I am pursuing an <strong>MSc</strong> in <strong>Informatics at TU Munich</strong> 🇩🇪.<br><br>
-      Previously, I graduated in Computer Engineering from <strong>Boğaziçi University</strong> 🇹🇷.<br><br>
+    <p class="intro">I am pursuing an <strong>MSc</strong> in <strong>Informatics at TU Munich</strong>, Germany.<br><br>
+      Previously, I graduated in Computer Engineering from <strong>Boğaziçi University</strong>, Türkiye.<br><br>
       I’m interested in <strong>NLP</strong>, especially how word structure shapes what small language models learn, and I’m open to research collaborations.<br><br>
       I co-created <a href="tabibert.html"><strong>TabiBERT</strong></a>, a modern Turkish encoder pre-trained on 1T tokens.</p>
   </div>
@@ -72,17 +72,17 @@
     <ul class="news-list">
       <li class="hot">
         <span class="news-date">17 Oct 2026</span>
-        <span class="badge">Talk</span>
+        <span class="badge b-talk">Talk</span>
         <span class="news-text">Presented <a href="tabibert.html">TabiBERT</a> at <a href="https://latentshift.ai/2026/">LatentShift 2026</a>, in the first edition. <a href="https://latentshift.ai/blog/lsai-2026-speaker-ebrar-kiziloglu/">Speaker profile →</a></span>
       </li>
       <li>
         <span class="news-date">Sep 2026</span>
-        <span class="badge">Collab</span>
+        <span class="badge b-collab">Collab</span>
         <span class="news-text">Co-supervising a bachelor thesis on Turkish <a href="morphology.html#thesis">morphological generation</a> at Boğaziçi.</span>
       </li>
       <li>
         <span class="news-date">Dec 2025</span>
-        <span class="badge">Paper</span>
+        <span class="badge b-paper">Paper</span>
         <span class="news-text">TabiBERT &amp; TabiBench <a href="https://arxiv.org/abs/2512.23065">preprint</a> on arXiv.</span>
       </li>
     </ul>
@@ -134,8 +134,13 @@
 </main>
 
 <footer class="wrap foot">
+  <div class="foot-word">
+    <div class="stage-word" id="heroWord" role="img" aria-label="evlerimizde, a Turkish word built from the root ev plus three suffixes"></div>
+    <div class="stage-gloss" id="heroGloss"></div>
+    <div class="stage-trans" id="heroTrans"></div>
+  </div>
   <span>© <span id="yr"></span> Asude Ebrar Kızıloğlu</span>
-  <span class="mono">ev·ler·imiz·de</span>
+  <a href="#main">Back to top</a>
   <p class="credits">Photos via Wikimedia Commons, all <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>: <a href="https://commons.wikimedia.org/wiki/File:Sultanahmet_ferry_on_the_Bosphorus_in_Istanbul,_Turkey_001.jpg">Moonik</a> (İstanbul), <a href="https://commons.wikimedia.org/wiki/File:Frauenkirche_Munich_March_2013.JPG">Martin Falbisoner</a> (Munich), <a href="https://commons.wikimedia.org/wiki/File:Tower_Bridge_London_Dusk_Feb_2006.jpg">Diliff</a> (London), <a href="https://commons.wikimedia.org/wiki/File:Limmat_and_Old_town.jpg">Tiia Monto</a> (Zurich).</p>
 </footer>
 
